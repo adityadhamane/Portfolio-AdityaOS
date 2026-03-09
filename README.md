@@ -40,7 +40,6 @@ ATS-friendly 1-page resume available for download inside the portfolio.
 
 **Aditya Dhamane** — MERN Stack Developer & SQL/PL-SQL Developer  
 📍 Wardha, Maharashtra, India  
-📧 adityadhamane100@gmail.com  
 🔗 [LinkedIn](https://linkedin.com/in/aditya-dhamane)
 ```
 
