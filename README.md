@@ -1,5 +1,6 @@
 # 💻 AdityaOS v3.0 — Aditya Dhamane's Portfolio
 
+For an optimal experience, use a desktop computer, or if using mobile, select the desktop version for better user interface.
 A fully interactive personal portfolio designed as a **macOS-style desktop operating system** — built with pure HTML, CSS, and JavaScript. No frameworks, no dependencies.
 
 🌐 **Live:** https://adityadhamane.github.io/Portfolio-AdityaOS/
