@@ -2,7 +2,7 @@
 
 A fully interactive personal portfolio designed as a **macOS-style desktop operating system** — built with pure HTML, CSS, and JavaScript. No frameworks, no dependencies.
 
-🌐 **Live:** https://adityadhamane.github.io
+🌐 **Live:** https://adityadhamane.github.io/Portfolio-AdityaOS/
 
 ---
 
