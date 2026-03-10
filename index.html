@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AdityaOS — Aditya Dhamane Portfolio</title>
+<title>AdityaOS — Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -660,9 +660,263 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--f);user-selec
 .ach-desc{padding:0 14px 12px;font-size:.63rem;color:rgba(255,255,255,.55);line-height:1.65;border-top:1px solid rgba(255,255,255,.04);margin-top:4px;padding-top:8px}
 .ach-tags{display:flex;flex-wrap:wrap;gap:5px;padding:0 14px 12px}
 .ach-tag{font-size:.55rem;padding:2px 7px;border-radius:6px;font-weight:600}
+
+/* ═══════════════════════════════════════════════════
+   MOBILE RESPONSIVE — AdityaOS
+   Triggers at ≤768px: switches from desktop OS
+   to a native mobile app layout
+═══════════════════════════════════════════════════ */
+
+/* ── Mobile base ── */
+/* ── Mobile-only elements: hidden on desktop ── */
+#mob-nav,#mob-drawer,#mob-content,#mob-back-bar{display:none}
+
+@media(max-width:768px){
+  html{background:#080c18!important;overflow:visible!important;overflow-x:hidden!important;height:auto!important;min-height:100dvh!important}
+  body{background:#080c18!important;overflow:visible!important;overflow-x:hidden!important;height:auto!important;min-height:100dvh!important;padding-top:0!important}
+
+  /* hide canvas + desktop-only chrome */
+  #lifeMap,#rain,#snap-hint,#mapHint,#mapTip,
+  .dicons,.wrsz,.wdots,.wctrl{display:none!important}
+
+  /* taskbar strip at bottom */
+  #tb{position:fixed!important;bottom:0!important;left:0!important;right:0!important;
+      height:46px!important;padding:0 8px!important;gap:4px!important;
+      overflow-x:auto!important;scrollbar-width:none!important;z-index:500!important}
+  #tb::-webkit-scrollbar{display:none!important}
+  .tb-div{display:none!important}
+  .tb-win-btn{font-size:.6rem!important;padding:3px 7px!important;max-width:80px!important;
+              overflow:hidden!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+
+  /* neutral desk — just a container on mobile */
+  #desk{position:static!important;width:100%!important;height:auto!important;
+        min-height:0!important;overflow:visible!important;padding:0!important;
+        background:var(--bg)!important}
+
+  /* ALL windows hidden until mob-active */
+  .win{display:none!important;position:fixed!important;
+       top:92px!important;left:0!important;right:0!important;
+       bottom:46px!important;width:100%!important;height:auto!important;
+       max-width:100%!important;border-radius:0!important;
+       border-left:none!important;border-right:none!important;
+       box-shadow:none!important;animation:none!important;
+       z-index:300!important;flex-direction:column!important;overflow:hidden!important}
+  .win.mob-active{display:flex!important}
+
+  /* window title bar */
+  .wh{height:42px!important;border-radius:0!important;
+      cursor:default!important;padding:0 12px!important;flex-shrink:0!important}
+  .wtitle{font-size:.76rem!important}
+
+  /* window body scrolls */
+  .wb{flex:1!important;min-height:0!important;overflow-y:auto!important;
+      overflow-x:hidden!important;-webkit-overflow-scrolling:touch!important}
+
+  /* ── top nav bar ── */
+  #mob-nav{display:flex!important;position:fixed!important;
+           top:0!important;left:0!important;right:0!important;height:52px!important;
+           background:rgba(5,8,15,.98)!important;
+           border-bottom:1px solid rgba(255,255,255,.08)!important;
+           align-items:center!important;justify-content:space-between!important;
+           padding:0 14px!important;z-index:9000!important;
+           backdrop-filter:blur(20px)!important;-webkit-backdrop-filter:blur(20px)!important}
+  #mob-nav-logo{font-family:"Syne",sans-serif!important;font-size:.95rem!important;
+                font-weight:800!important;color:#fff!important}
+  #mob-nav-logo span{color:#00d4ff}
+  #mob-menu-btn{width:38px!important;height:38px!important;border-radius:8px!important;
+                border:1px solid rgba(255,255,255,.12)!important;
+                background:rgba(255,255,255,.05)!important;
+                color:#fff!important;font-size:.75rem!important;font-weight:700!important;
+                display:flex!important;align-items:center!important;justify-content:center!important;
+                cursor:pointer!important;gap:4px!important}
+
+  /* ── back bar (between nav and window) ── */
+  #mob-back-bar{display:none!important;position:fixed!important;
+                top:52px!important;left:0!important;right:0!important;height:40px!important;
+                background:rgba(8,11,20,.97)!important;
+                border-bottom:1px solid rgba(255,255,255,.07)!important;
+                align-items:center!important;justify-content:space-between!important;
+                padding:0 12px!important;z-index:8500!important;flex-shrink:0!important}
+  #mob-back-bar.show{display:flex!important}
+
+  /* ── home drawer ── */
+  #mob-drawer{display:none!important;position:fixed!important;
+              top:52px!important;left:0!important;right:0!important;bottom:0!important;
+              background:rgba(4,6,12,.99)!important;z-index:8000!important;
+              overflow-y:auto!important;padding:16px 12px 60px!important;
+              -webkit-overflow-scrolling:touch!important}
+  #mob-drawer.open{display:block!important}
+
+  .mob-drawer-title{font-size:.58rem!important;letter-spacing:.14em!important;
+                    color:rgba(0,212,255,.5)!important;text-transform:uppercase!important;
+                    margin-bottom:10px!important;font-family:"Syne",sans-serif!important}
+  .mob-app-grid{display:grid!important;grid-template-columns:repeat(4,1fr)!important;
+                gap:8px!important;margin-bottom:20px!important}
+  .mob-app-item{display:flex!important;flex-direction:column!important;
+                align-items:center!important;gap:5px!important;padding:10px 4px!important;
+                border-radius:12px!important;border:1px solid rgba(255,255,255,.07)!important;
+                background:rgba(255,255,255,.03)!important;cursor:pointer!important;
+                -webkit-tap-highlight-color:transparent!important;transition:all .1s!important}
+  .mob-app-item:active{background:rgba(0,212,255,.14)!important;
+                       border-color:rgba(0,212,255,.4)!important;transform:scale(.92)!important}
+  .mob-app-icon{font-size:1.7rem!important;line-height:1!important}
+  .mob-app-label{font-size:.54rem!important;color:rgba(255,255,255,.65)!important;
+                 text-align:center!important;line-height:1.2!important}
+
+  /* project/cert detail overlays */
+  #win-projdetail.mob-active,#win-certdetail.mob-active{
+    display:flex!important;z-index:8800!important;top:52px!important;bottom:0!important}
+
+  /* show close button inside detail popups on mobile */
+  #win-projdetail .mob-close-btn,
+  #win-certdetail .mob-close-btn{
+    display:flex!important;
+    align-items:center!important;
+    padding:4px 10px!important;
+    border-radius:6px!important;
+    background:rgba(255,80,80,.12)!important;
+    border:1px solid rgba(255,80,80,.3)!important;
+    color:#ff6b6b!important;
+    font-size:.68rem!important;
+    font-weight:700!important;
+    cursor:pointer!important;
+    margin-left:auto!important;
+    flex-shrink:0!important;
+  }
+  /* wdots hidden but mob-close-btn visible */
+  #win-projdetail .wdots,#win-certdetail .wdots{display:none!important}
+  #win-projdetail .wctrl,#win-certdetail .wctrl{display:none!important}
+
+  /* life story map section */
+  #mob-life-map{display:block!important}
+
+  /* ── per-app inner layout ── */
+  .a-hero{flex-direction:column!important;align-items:center!important;
+          text-align:center!important;padding:16px!important;gap:10px!important}
+  .a-av-wrap{width:72px!important;height:72px!important}
+  .a-info{align-items:center!important;min-width:0!important;width:100%!important;overflow:visible!important}
+  .a-name{font-size:1.2rem!important;white-space:normal!important;overflow:visible!important;text-overflow:unset!important;word-break:break-word!important}
+  .a-hero-inner{flex-direction:column!important;align-items:center!important;text-align:center!important;gap:12px!important}
+  .a-hero-banner{padding:16px!important}
+  .a-role-wrap{justify-content:center!important;min-width:0!important;width:100%!important}
+  .a-role{white-space:normal!important;overflow:visible!important;text-overflow:unset!important}
+  .a-status-row{flex-direction:column!important;align-items:center!important;gap:4px!important}
+  .a-links{flex-wrap:wrap!important;justify-content:center!important;gap:6px!important}
+  .a-lnk{font-size:.65rem!important;padding:5px 10px!important}
+  .a-name{font-size:1.3rem!important}
+  .a-roles{justify-content:center!important;flex-wrap:wrap!important}
+  .a-btns{flex-wrap:wrap!important;justify-content:center!important;gap:6px!important}
+  .a-btns .a-btn{min-width:130px!important;justify-content:center!important}
+  .a-stats{display:grid!important;grid-template-columns:repeat(2,1fr)!important;
+           gap:8px!important;padding:10px 12px!important}
+  .cf-2{grid-template-columns:1fr!important}
+
+  .sk-wrap{flex-direction:column!important}
+  .sk-nav{width:100%!important;flex-direction:row!important;overflow-x:auto!important;
+          border-right:none!important;border-bottom:1px solid rgba(255,255,255,.06)!important;
+          flex-shrink:0!important;scrollbar-width:none!important;
+          -webkit-overflow-scrolling:touch!important}
+  .sk-nav::-webkit-scrollbar{display:none!important}
+  .sk-ni{border-left:none!important;border-bottom:2px solid transparent!important;
+         white-space:nowrap!important;flex-shrink:0!important;padding:10px 14px!important}
+  .sk-ni.active{border-left:none!important;border-bottom-color:var(--acc)!important}
+  .sk-panel{padding:12px!important}
+  .sk-cards{grid-template-columns:1fr!important}
+
+  .pj-wrap{grid-template-columns:1fr!important;padding:10px!important;gap:8px!important}
+
+  /* Life Story window — flex column fills fixed height */
+  #win-lifestory{overflow:hidden!important}
+  #win-lifestory .wb{
+    display:flex!important;flex-direction:column!important;
+    overflow:hidden!important;flex:1!important;min-height:0!important;
+    height:0!important;
+  }
+  .ls-wrap{
+    flex:1!important;min-height:0!important;
+    display:flex!important;flex-direction:column!important;
+    overflow:hidden!important;height:100%!important;
+  }
+  .ls-scroll{
+    flex:1!important;min-height:0!important;
+    overflow-y:auto!important;overflow-x:hidden!important;
+    -webkit-overflow-scrolling:touch!important;
+    height:0!important;
+  }
+  .ls-controls{flex-shrink:0!important}
+  .ls-hero{flex-shrink:0!important}
+  .ls-hero{flex-wrap:wrap!important;padding:10px 12px!important;gap:8px!important}
+  .ls-stats{flex-wrap:wrap!important;gap:5px!important}
+  .ls-controls{padding:6px 10px!important;overflow-x:auto!important;scrollbar-width:none!important}
+  .ls-year-col{width:44px!important}
+  .ls-badge{width:40px!important;height:36px!important;font-size:.6rem!important}
+
+  .ex-tabs{overflow-x:auto!important;-webkit-overflow-scrolling:touch!important;scrollbar-width:none!important}
+  .ex-tabs::-webkit-scrollbar{display:none!important}
+  .ex-tab{white-space:nowrap!important;flex-shrink:0!important}
+  .ex-body{padding:12px!important}
+
+  .cd-grid{grid-template-columns:1fr!important;padding:10px!important;gap:8px!important}
+  .ed-cards{padding:10px!important;gap:8px!important}
+  .ed-hdr{flex-direction:column!important;gap:4px!important}
+
+  #spotlight{width:92vw!important;top:58px!important}
+  *{-webkit-tap-highlight-color:transparent}
+}
+@media(max-width:390px){
+  .mob-app-grid{grid-template-columns:repeat(3,1fr)!important}
+}
+
 </style>
 </head>
 <body>
+
+<!-- MOBILE NAV -->
+<div id="mob-nav">
+  <div id="mob-nav-logo" onclick="mobBack()" style="cursor:pointer">Aditya<span>OS</span></div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div id="mob-status" style="font-size:.6rem;color:rgba(0,212,255,.6);font-family:'JetBrains Mono',monospace"></div>
+    <div id="mob-menu-btn" onclick="toggleMobDrawer()" style="transition:all .2s">☰ Apps</div>
+  </div>
+</div>
+
+<!-- MOBILE DRAWER -->
+<div id="mob-drawer">
+  <div class="mob-drawer-title">Apps</div>
+  <div class="mob-app-grid">
+    <div class="mob-app-item" onclick="mobOpenApp('about')">   <div class="mob-app-icon">👤</div><div class="mob-app-label">About</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('skills')">  <div class="mob-app-icon">⚡</div><div class="mob-app-label">Skills</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('experience')"><div class="mob-app-icon">💼</div><div class="mob-app-label">Experience</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('projects')"><div class="mob-app-icon">🚀</div><div class="mob-app-label">Projects</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('education')"><div class="mob-app-icon">🎓</div><div class="mob-app-label">Education</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('certificates')"><div class="mob-app-icon">📜</div><div class="mob-app-label">Certs</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('lifestory')"><div class="mob-app-icon">🕐</div><div class="mob-app-label">Life Story</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('achievements')"><div class="mob-app-icon">🏆</div><div class="mob-app-label">Achievements</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('terminal')"><div class="mob-app-icon">💻</div><div class="mob-app-label">Terminal</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('contact')"> <div class="mob-app-icon">✉️</div><div class="mob-app-label">Contact</div></div>
+    <div class="mob-app-item" onclick="mobOpenApp('rating')">  <div class="mob-app-icon">⭐</div><div class="mob-app-label">Rate Me</div></div>
+  </div>
+  <div class="mob-drawer-title" style="margin-top:4px">🗺️ Life Journey</div>
+  <div id="mob-life-map" style="display:none;border-radius:12px;overflow:hidden;border:1px solid rgba(0,212,255,.15);margin-bottom:16px;background:rgba(5,8,15,.9)">
+    <canvas id="lifeMapMob" style="width:100%;height:220px;display:block"></canvas>
+  </div>
+
+  <div class="mob-drawer-title" style="margin-top:4px">Quick Links</div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap">
+    <a href="https://linkedin.com/in/aditya-dhamane" target="_blank" style="flex:1;min-width:100px;padding:10px;background:rgba(0,119,181,.12);border:1px solid rgba(0,119,181,.3);border-radius:10px;color:#4a9eff;font-size:.72rem;font-weight:600;text-align:center;text-decoration:none">in LinkedIn</a>
+    <a href="https://github.com/adityadhamane" target="_blank" style="flex:1;min-width:100px;padding:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:#ccc;font-size:.72rem;font-weight:600;text-align:center;text-decoration:none">🐱 GitHub</a>
+    <div onclick="downloadResume()" style="flex:1;min-width:100px;padding:10px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.22);border-radius:10px;color:#00d4ff;font-size:.72rem;font-weight:600;text-align:center;cursor:pointer">📄 Resume</div>
+  </div>
+</div>
+
+<!-- MOBILE BACK BAR -->
+<div id="mob-back-bar">
+  <div onclick="mobBack()" style="display:flex;align-items:center;gap:5px;padding:5px 11px;border-radius:7px;background:rgba(0,212,255,.08);border:1px solid rgba(0,212,255,.22);color:#00d4ff;font-size:.72rem;font-weight:600;cursor:pointer">‹ Home</div>
+  <div id="mob-back-title" style="font-size:.72rem;color:rgba(255,255,255,.5);font-family:'Syne',sans-serif;font-weight:600"></div>
+  <div style="width:60px"></div>
+</div>
+<!-- MOBILE CONTENT -->
+<div id="mob-content"></div>
 
 <!-- BOOT -->
 <div id="boot">
@@ -1495,6 +1749,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--f);user-selec
     <div class="wdots"><div class="wd dc" onclick="closeProjDetail()"></div><div class="wd dm" onclick="minimizeProjDetail()"></div><div class="wd dx" onclick="maxWin('win-projdetail')"></div></div>
     <div class="wtitle"><span class="wi" id="pdIcon">🚀</span><span id="pdTitle">Project</span></div>
     <div class="wctrl"><div class="wbtn" onclick="closeProjDetail()">✕</div></div>
+    <div class="mob-close-btn" onclick="closeProjDetail()">✕ Close</div>
   </div>
   <div class="wb" style="overflow-y:auto;overflow-x:hidden;height:calc(100% - 42px);scrollbar-width:thin;scrollbar-color:rgba(0,212,255,.2) transparent">
     <div id="pdBody" style="padding:16px 16px 24px 16px;display:flex;flex-direction:column;gap:12px"></div>
@@ -1723,6 +1978,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--f);user-selec
     <div class="wdots"><div class="wd dc" onclick="closeCertDetail()"></div><div class="wd dm" onclick="minimizeCertDetail()"></div><div class="wd dx" onclick="maxWin('win-certdetail')"></div></div>
     <div class="wtitle"><span class="wi" id="cdIcon">📜</span><span id="cdTitle">Certificate</span></div>
     <div class="wctrl"><div class="wbtn" onclick="closeCertDetail()">✕</div></div>
+    <div class="mob-close-btn" onclick="closeCertDetail()">✕ Close</div>
   </div>
   <div class="wb" style="overflow-y:auto;overflow-x:hidden;height:calc(100% - 42px);scrollbar-width:thin;scrollbar-color:rgba(127,255,107,.2) transparent">
     <div id="cdBody" style="padding:16px 16px 24px 16px;display:flex;flex-direction:column;gap:12px"></div>
@@ -1997,6 +2253,8 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--f);user-selec
 <div class="toast" id="toast"><span class="toast-ico" id="toastIco"></span><span id="toastMsg"></span></div>
 
 <script>
+const isMobile=()=>window.innerWidth<=768;
+
 // ═══ BOOT ═══
 const BMSGS=['Initializing AdityaOS kernel...','Loading portfolio modules...','Mounting experience.log...','Loading life.story events...','Starting window compositor...','Loading projects.repo...','Starting notification service...','Rendering desktop...','Welcome, Recruiter!'];
 let bp=0;
@@ -2916,12 +3174,17 @@ function openCertDetail(idx){
   const w = document.getElementById('win-certdetail');
   const col = d.color;
 
-  // Position it to the right of the main certs window
-  const certWin = document.getElementById('win-certificates');
-  const cx = certWin.offsetLeft + certWin.offsetWidth + 14;
-  const cy = certWin.offsetTop;
-  w.style.left = Math.min(cx, window.innerWidth - 440) + 'px';
-  w.style.top  = cy + 'px';
+  if(isMobile()){
+    w.classList.add('mob-active');
+    w.style.display='flex';
+  } else {
+    // Position it to the right of the main certs window
+    const certWin = document.getElementById('win-certificates');
+    const cx = certWin.offsetLeft + certWin.offsetWidth + 14;
+    const cy = certWin.offsetTop;
+    w.style.left = Math.min(cx, window.innerWidth - 440) + 'px';
+    w.style.top  = cy + 'px';
+  }
 
   // Populate header
   document.getElementById('cdIcon').textContent  = d.icon;
@@ -2998,6 +3261,7 @@ function openCertDetail(idx){
 
 function closeCertDetail(){
   const w = document.getElementById('win-certdetail');
+  if(isMobile()){ w.classList.remove('mob-active'); w.style.display='none'; return; }
   w.style.animation = 'wclose .18s ease forwards';
   setTimeout(()=>{ w.style.animation=''; w.style.display='none'; w.classList.remove('vis'); }, 170);
 }
@@ -3203,12 +3467,17 @@ function openProjDetail(idx){
   const w = document.getElementById('win-projdetail');
   const col = d.color;
 
-  // Position to the right of the projects window
-  const pjWin = document.getElementById('win-projects');
-  const px = pjWin.offsetLeft + pjWin.offsetWidth + 14;
-  const py = pjWin.offsetTop;
-  w.style.left = Math.min(px, window.innerWidth - 450) + 'px';
-  w.style.top  = py + 'px';
+  if(isMobile()){
+    w.classList.add('mob-active');
+    focusWin(w);
+  } else {
+    // Position to the right of the projects window
+    const pjWin = document.getElementById('win-projects');
+    const px = pjWin.offsetLeft + pjWin.offsetWidth + 14;
+    const py = pjWin.offsetTop;
+    w.style.left = Math.min(px, window.innerWidth - 450) + 'px';
+    w.style.top  = py + 'px';
+  }
 
   // Header
   document.getElementById('pdIcon').textContent  = d.icon;
@@ -3291,6 +3560,7 @@ function openProjDetail(idx){
 
 function closeProjDetail(){
   const w = document.getElementById('win-projdetail');
+  if(isMobile()){ w.classList.remove('mob-active'); return; }
   w.style.animation = 'wclose .18s ease forwards';
   setTimeout(()=>{ w.style.animation=''; w.style.display='none'; w.classList.remove('vis'); }, 170);
 }
@@ -3303,10 +3573,184 @@ function minimizeProjDetail(){
 
 // ═══ INIT ═══
 function initDesktop(){
+  if(isMobile()){
+    initMobileMode();
+    return;
+  }
   initRain();
   initLifeMap();
   setTimeout(()=>toast('🗺️','Your life journey is on the desktop! Click any glowing node to explore.'),600);
 }
+
+// ═══════════════════════════════════════
+//  MOBILE RESPONSIVE ENGINE
+// ═══════════════════════════════════════
+let _mobCurApp=null;
+
+function initMobileMode(){
+  // Show nav bar
+  const nav=document.getElementById('mob-nav');
+  if(nav) nav.style.display='flex';
+
+  // Clock
+  const tick=()=>{const t=new Date(),el=document.getElementById('mob-status');if(el)el.textContent=t.getHours().toString().padStart(2,'0')+':'+t.getMinutes().toString().padStart(2,'0');};
+  tick(); setInterval(tick,30000);
+
+  // Show home drawer
+  const d=document.getElementById('mob-drawer');
+  if(d){ d.style.display='block'; d.classList.add('open'); }
+
+  // Hide taskbar win buttons
+  document.querySelectorAll('.tb-win-btn').forEach(b=>b.style.display='none');
+
+  // Draw life map after a short delay (ensure DOM is laid out)
+  setTimeout(drawMobLifeMap, 600);
+}
+
+function drawMobLifeMap(){
+  const canvas=document.getElementById('lifeMapMob');
+  if(!canvas) return;
+  const dpr=window.devicePixelRatio||1;
+  // Use container width (offsetWidth may be 0 if hidden) — fallback to innerWidth
+  const W=canvas.parentElement.offsetWidth||canvas.offsetWidth||(window.innerWidth-24)||340;
+  const H=220;
+  canvas.width=W*dpr; canvas.height=H*dpr;
+  canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  const ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+
+  // Dark background
+  ctx.fillStyle='#050810';
+  ctx.fillRect(0,0,W,H);
+
+  // Draw grid dots
+  ctx.fillStyle='rgba(0,212,255,.06)';
+  for(let x=0;x<W;x+=22)for(let y=0;y<H;y+=22){
+    ctx.beginPath();ctx.arc(x,y,1,0,Math.PI*2);ctx.fill();
+  }
+
+  const nodes=MAP_NODES||[];
+  if(!nodes.length){
+    ctx.fillStyle='rgba(0,212,255,.3)';
+    ctx.font='12px Syne,sans-serif';ctx.textAlign='center';
+    ctx.fillText('Life Journey Map',W/2,H/2);
+    return;
+  }
+
+  // Draw connections first
+  ctx.strokeStyle='rgba(0,212,255,.12)';ctx.lineWidth=1;
+  for(let i=1;i<nodes.length;i++){
+    const a=nodes[i-1],b=nodes[i];
+    ctx.beginPath();
+    ctx.moveTo(a.rx*W,a.ry*H);
+    ctx.lineTo(b.rx*W,b.ry*H);
+    ctx.stroke();
+  }
+
+  // Draw nodes
+  nodes.forEach((n,i)=>{
+    const x=n.rx*W, y=n.ry*H;
+    const isAch=n.color&&n.color.includes('255,179');
+    const col=n.color||'#00d4ff';
+    const r=isAch?9:6;
+
+    // Glow
+    const grd=ctx.createRadialGradient(x,y,0,x,y,r*2.5);
+    grd.addColorStop(0,col.replace('#','rgba(').replace(/([0-9a-fA-F]{2})/g,h=>parseInt(h,16)+',')+'0.3)');
+    grd.addColorStop(1,'transparent');
+    ctx.fillStyle=grd; ctx.beginPath(); ctx.arc(x,y,r*2.5,0,Math.PI*2); ctx.fill();
+
+    // Node circle
+    ctx.fillStyle=col;
+    ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fill();
+
+    // Icon text
+    ctx.font=(isAch?'10px':'8px')+' serif';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.fillText(n.icon||'•',x,y);
+
+    // Year label (for every 3rd node)
+    if(i%3===0&&n.year){
+      ctx.fillStyle='rgba(0,212,255,.55)';
+      ctx.font='7px JetBrains Mono,monospace';
+      ctx.textAlign='center';ctx.textBaseline='top';
+      ctx.fillText(n.year,x,y+r+2);
+    }
+  });
+
+  // Title
+  ctx.fillStyle='rgba(0,212,255,.35)';
+  ctx.font='bold 9px Syne,sans-serif';
+  ctx.textAlign='left';ctx.textBaseline='top';
+  ctx.fillText('LIFE JOURNEY MAP · TAP NODES',10,8);
+
+  // Tap handler on canvas
+  canvas.onclick=function(e){
+    const rect=canvas.getBoundingClientRect();
+    const mx=(e.clientX-rect.left),my=(e.clientY-rect.top);
+    for(const n of nodes){
+      const nx=n.rx*W,ny=n.ry*H;
+      if(Math.hypot(mx-nx,my-ny)<14&&n.app){
+        mobOpenApp(n.app);return;
+      }
+    }
+  };
+  canvas.style.cursor='pointer';
+}
+
+function toggleMobDrawer(){
+  const d=document.getElementById('mob-drawer');
+  d.classList.toggle('open');
+}
+
+function mobOpenApp(id){
+  if(!isMobile()){_origOpenApp(id);return;}
+  // close drawer
+  document.getElementById('mob-drawer').classList.remove('open');
+  // hide all windows
+  document.querySelectorAll('.win').forEach(w=>w.classList.remove('mob-active'));
+  // show target
+  const win=document.getElementById('win-'+id);
+  if(!win)return;
+  win.classList.add('mob-active');
+  // show back bar
+  const bb=document.getElementById('mob-back-bar');
+  if(bb){bb.classList.add('show');const bt=document.getElementById('mob-back-title');if(bt)bt.textContent=id.charAt(0).toUpperCase()+id.slice(1);}
+  // scroll top
+  window.scrollTo({top:0,behavior:'instant'});
+  // app init
+  if(id==='lifestory')setTimeout(()=>initLifeStory(),120);
+  if(id==='terminal')setTimeout(()=>{const t=document.getElementById('termIn');if(t)t.focus();},300);
+  _mobCurApp=id;
+}
+
+function mobBack(){
+  // hide all windows
+  document.querySelectorAll('.win').forEach(w=>w.classList.remove('mob-active'));
+  // hide back bar
+  const bb=document.getElementById('mob-back-bar');if(bb)bb.classList.remove('show');
+  // show home drawer
+  const d=document.getElementById('mob-drawer');if(d)d.classList.add('open');
+  window.scrollTo({top:0,behavior:'instant'});
+  _mobCurApp=null;
+}
+
+const _origOpenApp=openApp;
+window.openApp=function(id){
+  if(isMobile()){mobOpenApp(id);return;}
+  _origOpenApp(id);
+};
+
+window.addEventListener('resize',()=>{
+  if(isMobile()){
+    document.getElementById('mob-nav').style.display='flex';
+  } else {
+    document.getElementById('mob-nav').style.display='none';
+    const d=document.getElementById('mob-drawer');if(d)d.classList.remove('open');
+    const bb=document.getElementById('mob-back-bar');if(bb)bb.classList.remove('show');
+    document.querySelectorAll('.win').forEach(w=>w.classList.remove('mob-active'));
+  }
+});;
+
 </script>
 
 <!-- GOODBYE / SHUTDOWN SCREEN -->
