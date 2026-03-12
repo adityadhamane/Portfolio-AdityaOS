@@ -7,7 +7,7 @@ As a Computer Engineer I am created AdityaOS-Operating System type Portfolio For
 
 This is an Operating System-style interactive portfolio.
 IMPORTANT: This portfolio is designed like a real OS with draggable windows, an interactive life journey map, and desktop- only features.
-A fully interactive personal portfolio designed as a **macOS-style desktop operating system** — built with pure HTML, CSS, and JavaScript.
+A fully interactive personal portfolio designed as a **Windows-style desktop operating system** — built with pure HTML, CSS, and JavaScript.
 
 🌐 **Live:** https://adityadhamane.github.io/Portfolio-AdityaOS/
 
