@@ -1028,7 +1028,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--f);user-selec
               <div class="a-loc">📍 Wardha, Maharashtra, India</div>
             </div>
             <div class="a-links">
-              <a class="a-lnk" href="/cdn-cgi/l/email-protection#a4c5c0cdd0ddc5c0ccc5c9c5cac1959494e4c3c9c5cdc88ac7cbc9">📧 Email</a>
+              <a class="a-lnk" href="/cdn-cgi/l/email-protection#6d0c090419140c09050c000c03085c5d5d2d0a000c0401430e0200">📧 Email</a>
               <a class="a-lnk" href="https://www.linkedin.com/in/aditya-dhamane" target="_blank">💼 LinkedIn</a>
               <a class="a-lnk" href="https://github.com/adityadhamane" target="_blank">🐱 GitHub</a>
               <a class="a-lnk" onclick="downloadResume()" style="cursor:pointer;background:rgba(0,212,255,.15);border-color:rgba(0,212,255,.4);color:#00d4ff;font-weight:700">📄 Resume</a>
@@ -2033,7 +2033,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--f);user-selec
   </div>
   <div class="wb">
     <div class="co-wrap">
-      <div class="co-row"><div class="co-ico">📧</div><div><div class="co-k">Email</div><a class="co-v" href="/cdn-cgi/l/email-protection#aecfcac7dad7cfcac6cfc3cfc0cb9f9e9eeec9c3cfc7c280cdc1c3"><span class="__cf_email__" data-cfemail="0d6c696479746c69656c606c63683c3d3d4d6a606c6461236e6260">[email&#160;protected]</span></a></div></div>
+      <div class="co-row"><div class="co-ico">📧</div><div><div class="co-k">Email</div><a class="co-v" href="/cdn-cgi/l/email-protection#fb9a9f928f829a9f939a969a959ecacbcbbb9c969a9297d5989496"><span class="__cf_email__" data-cfemail="402124293439212428212d212e2571707000272d21292c6e232f2d">[email&#160;protected]</span></a></div></div>
       <div class="co-row"><div class="co-ico">📱</div><div><div class="co-k">Phone</div><a class="co-v" href="tel:+919021915574">+91 9021915574</a></div></div>
       <div class="co-row"><div class="co-ico">💼</div><div><div class="co-k">LinkedIn</div><a class="co-v" href="https://www.linkedin.com/in/aditya-dhamane" target="_blank">linkedin.com/in/aditya-dhamane</a></div></div>
       <div class="co-row"><div class="co-ico">🐱</div><div><div class="co-k">GitHub</div><a class="co-v" href="https://github.com/adityadhamane" target="_blank">github.com/adityadhamane</a></div></div>
@@ -2232,6 +2232,7 @@ html,body{width:100%;height:100%;overflow:hidden;font-family:var(--f);user-selec
     <div class="sm-app" onclick="openApp('contact');closeSM()"><span class="sm-ai">✉️</span><span class="sm-an">Contact</span></div>
     <div class="sm-app" onclick="openApp('lifestory');closeSM()"><span class="sm-ai">🕐</span><span class="sm-an">Life Story</span></div>
     <div class="sm-app" onclick="openApp('achievements');closeSM()"><span class="sm-ai">🏆</span><span class="sm-an">Achieve</span></div>
+    <div class="sm-app" onclick="openApp('rating');closeSM()"><span class="sm-ai">⭐</span><span class="sm-an">Rate.exe</span></div>
   </div>
   <div class="sm-foot"><div class="sm-ver">AdityaOS v3.0</div><a class="sm-sd" onclick="downloadResume();closeSM()" style="background:rgba(0,212,255,.1);border-color:rgba(0,212,255,.25);color:#00d4ff;text-decoration:none;cursor:pointer">📄 Resume</a><div class="sm-sd" onclick="doShutdown()">⏻ Shut Down</div></div>
 </div>
@@ -3177,8 +3178,8 @@ function openCertDetail(idx){
   if(isMobile()){
     document.getElementById('mob-drawer').style.display = 'none';
     document.querySelectorAll('.win').forEach(x => x.classList.remove('mob-active'));
+    w.style.display = 'flex';
     w.classList.add('mob-active');
-    w.style.setProperty('display','flex','important');
     const bb = document.getElementById('mob-back-bar');
     if(bb){ bb.style.display='flex'; document.getElementById('mob-back-title').textContent='Certificate Detail'; }
   } else {
@@ -3255,11 +3256,13 @@ function openCertDetail(idx){
   `;
 
   // Show window with animation
-  w.style.display = 'block';
-  w.classList.add('vis');
-  w.style.animation = 'wopen .22s cubic-bezier(.34,1.56,.64,1)';
-  setTimeout(()=>{ w.style.animation='cdFloat 4s ease-in-out infinite'; }, 240);
-  w.style.zIndex = ++zTop;
+  if(!isMobile()){
+    w.style.display = 'block';
+    w.classList.add('vis');
+    w.style.animation = 'wopen .22s cubic-bezier(.34,1.56,.64,1)';
+    setTimeout(()=>{ w.style.animation='cdFloat 4s ease-in-out infinite'; }, 240);
+    w.style.zIndex = ++zTop;
+  }
   cdMini = false;
 }
 
@@ -3481,8 +3484,8 @@ function openProjDetail(idx){
   if(isMobile()){
     document.getElementById('mob-drawer').style.display = 'none';
     document.querySelectorAll('.win').forEach(x => x.classList.remove('mob-active'));
+    w.style.display = 'flex';
     w.classList.add('mob-active');
-    w.style.setProperty('display','flex','important');
     const bb = document.getElementById('mob-back-bar');
     if(bb){ bb.style.display='flex'; document.getElementById('mob-back-title').textContent='Project Detail'; }
   } else {
@@ -3566,11 +3569,13 @@ function openProjDetail(idx){
   `;
 
   // Show with animation
-  w.style.display = 'block';
-  w.classList.add('vis');
-  w.style.animation = 'wopen .22s cubic-bezier(.34,1.56,.64,1)';
-  setTimeout(()=>{ w.style.animation='cdFloat 4s ease-in-out infinite'; }, 240);
-  w.style.zIndex = ++zTop;
+  if(!isMobile()){
+    w.style.display = 'block';
+    w.classList.add('vis');
+    w.style.animation = 'wopen .22s cubic-bezier(.34,1.56,.64,1)';
+    setTimeout(()=>{ w.style.animation='cdFloat 4s ease-in-out infinite'; }, 240);
+    w.style.zIndex = ++zTop;
+  }
 }
 
 function closeProjDetail(){
@@ -3820,11 +3825,19 @@ window.addEventListener('resize',()=>{
 
     <!-- Quick links -->
     <div style="display:flex;gap:14px;justify-content:center;animation:gbSlideUp .6s .75s both">
-      <a href="/cdn-cgi/l/email-protection#3f5e5b564b465e5b575e525e515a0e0f0f7f58525e5653115c5052" style="padding:8px 18px;border:1px solid rgba(0,212,255,.25);border-radius:20px;color:#00d4ff;text-decoration:none;font-size:.72rem;background:rgba(0,212,255,.06);transition:all .2s" onmouseover="this.style.background='rgba(0,212,255,.15)'" onmouseout="this.style.background='rgba(0,212,255,.06)'">✉️ Email Me</a>
+      <a href="/cdn-cgi/l/email-protection#f495909d808d95909c9599959a91c5c4c4b49399959d98da979b99" style="padding:8px 18px;border:1px solid rgba(0,212,255,.25);border-radius:20px;color:#00d4ff;text-decoration:none;font-size:.72rem;background:rgba(0,212,255,.06);transition:all .2s" onmouseover="this.style.background='rgba(0,212,255,.15)'" onmouseout="this.style.background='rgba(0,212,255,.06)'">✉️ Email Me</a>
       <a href="https://linkedin.com/in/aditya-dhamane" target="_blank" style="padding:8px 18px;border:1px solid rgba(127,255,107,.2);border-radius:20px;color:#7fff6b;text-decoration:none;font-size:.72rem;background:rgba(127,255,107,.05);transition:all .2s" onmouseover="this.style.background='rgba(127,255,107,.12)'" onmouseout="this.style.background='rgba(127,255,107,.05)'">💼 LinkedIn</a>
       <a href="https://github.com/adityadhamane" target="_blank" style="padding:8px 18px;border:1px solid rgba(255,255,255,.12);border-radius:20px;color:rgba(255,255,255,.6);text-decoration:none;font-size:.72rem;background:rgba(255,255,255,.03);transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.08)'" onmouseout="this.style.background='rgba(255,255,255,.03)'">🐱 GitHub</a>
     </div>
 
     <!-- Restart hint -->
     <div style="margin-top:28px;display:flex;flex-direction:column;align-items:center;gap:12px">
-      <button onclick="restartOS()" style="padding:12px 34px;background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(127,255,107,.1));border:1px solid rgba(0,212,255,.4);border-radius:24px;color:#00d4ff;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;letter-spacing:.08em;transition:all .2s;box-shadow:0 0 20px rgba(0,212,255,.1)" onmouseover="this.style.background='linear-gradient(135deg,rgba(0,212,255,.25),rgba(127,255,107,.18))';this.style.boxShadow='0 0 35px rgba(0,212,255,.25)'" onmouseout="this.style.ba
+      <button onclick="restartOS()" style="padding:12px 34px;background:linear-gradient(135deg,rgba(0,212,255,.15),rgba(127,255,107,.1));border:1px solid rgba(0,212,255,.4);border-radius:24px;color:#00d4ff;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;letter-spacing:.08em;transition:all .2s;box-shadow:0 0 20px rgba(0,212,255,.1)" onmouseover="this.style.background='linear-gradient(135deg,rgba(0,212,255,.25),rgba(127,255,107,.18))';this.style.boxShadow='0 0 35px rgba(0,212,255,.25)'" onmouseout="this.style.background='linear-gradient(135deg,rgba(0,212,255,.08),rgba(127,255,107,.05))';this.style.boxShadow='0 0 20px rgba(0,212,255,.08)'">🔄 Restart AdityaOS</button>
+      <div style="font-size:.6rem;color:rgba(255,255,255,.2);letter-spacing:.08em">Press to reboot the system</div>
+    </div>
+
+  </div><!-- /gbContent -->
+</div><!-- /goodbyeScreen -->
+
+</body>
+</html>
